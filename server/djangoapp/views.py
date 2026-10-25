@@ -58,3 +58,27 @@ def registration(request):
         return JsonResponse({"userName": username, "status": "Registered"})
 
     return JsonResponse({"error": "Invalid Request"})
+
+def getallcarmakes(request):
+    from .models import CarMake
+
+    makes = CarMake.objects.prefetch_related("models").all().order_by("name")
+    data = []
+
+    for make in makes:
+        data.append({
+            "id": make.id,
+            "name": make.name,
+            "description": make.description,
+            "models": [
+                {
+                    "id": model.id,
+                    "name": model.name,
+                    "type": model.type,
+                    "year": model.year,
+                }
+                for model in make.models.all().order_by("name", "year")
+            ],
+        })
+
+    return JsonResponse(data, safe=False)
