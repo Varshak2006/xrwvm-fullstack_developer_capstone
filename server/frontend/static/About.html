@@ -1,83 +1,263 @@
-<html>
+```html
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="/static/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Best Cars</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Project CSS -->
+    <link rel="stylesheet" href="static/style.css">
+
+    <style>
+        body {
+            background-color: #f5f7fa;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .about-header {
+            background-color: darkturquoise;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .about-header h1 {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .about-description {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .team-section {
+            padding: 20px 0 50px;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .team-card {
+            height: 100%;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            padding-bottom: 25px;
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .team-card h3 {
+            font-size: 23px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .team-card .role {
+            color: #087f8c;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .team-card p {
+            padding: 0 18px;
+        }
+
+        .team-card a {
+            color: #087f8c;
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 767px) {
+            .team-card {
+                margin-bottom: 25px;
+            }
+
+            .team-card img {
+                height: 250px;
+            }
+        }
+    </style>
 </head>
-<div>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light"
+     style="background-color: darkturquoise;">
     <div class="container-fluid">
-      <h2 style="padding-right: 5%;">Dealerships</h2>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-        <div class="banner" name="about-header" style="padding: 25px; text-align: center;">
-            <h1>About Us</h1>
-            <p>Welcome to Best Cars dealership, home to the best cars in North America.</p>
-            <p>Our team is committed to helping customers find quality vehicles and enjoy a smooth car-buying experience.</p>
-          </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <!-- <p class="title">Person1</p>
-          <p>Person1 Title</p>
-          <p class="card-text">Some text that explains the person1 in about 2 short sentences</p>
-          <p>person1@example.com</p> -->
-          <p class="title">Alex Morgan</p>
-<p>Sales Manager</p>
-<p class="card-text">Alex helps customers find vehicles that match their needs and budget. Alex also ensures every customer receives friendly, reliable service.</p>
-<p>alex.morgan@example.com</p>
-        </div>
-      </div>
+        <a class="navbar-brand font-weight-bold" href="/">
+            Best Cars
+        </a>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <!-- <p class="title">Person2</p>
-          <p>Person2 Title</p>
-          <p class="card-text">Some text that explains the person2 in about 2 short sentences</p>
-          <p>person2@example.com</p> -->
-          <p class="title">Jamie Taylor</p>
-<p>Customer Relations Specialist</p>
-<p class="card-text">Jamie assists customers throughout the buying process. Jamie focuses on answering questions and creating a positive dealership experience.</p>
-<p>jamie.taylor@example.com</p>
-        </div>
-      </div>
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse"
+                data-target="#navbarText"
+                aria-controls="navbarText"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <!-- <p class="title">Person3</p>
-          <p>Person3 Title</p>
-          <p class="card-text">Some text that explains the person3 in about 2 short sentences</p>
-          <p>person3@example.com</p> -->
-          <p class="title">Jordan Lee</p>
-<p>Vehicle Sales Consultant</p>
-<p class="card-text">Jordan explains vehicle features and helps customers compare available options. Jordan is dedicated to making car shopping simple and convenient.</p>
-<p>jordan.lee@example.com</p>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact Us</a>
+                </li>
+            </ul>
         </div>
-      </div>
     </div>
-    </div>
-    </div>
-    
-</div>
+</nav>
 
+<header class="about-header">
+    <h1>About Us</h1>
+    <p class="mb-0">
+        Your trusted partner for finding the right car.
+    </p>
+</header>
+
+<main>
+    <section class="about-description">
+        <h2>Welcome to Best Cars Dealership</h2>
+
+        <p>
+            Welcome to Best Cars, your trusted destination for quality
+            domestic and imported vehicles across North America. We deal
+            in the sale of a wide range of vehicles at reasonable prices
+            and help customers find cars that match their needs, preferences,
+            and budgets.
+        </p>
+
+        <p>
+            Our team is committed to providing reliable information,
+            friendly customer service, and a convenient car-buying
+            experience. Whether you are exploring available models,
+            comparing vehicle features, or looking for assistance with
+            your purchase, we are here to guide you at every step.
+        </p>
+
+        <p>
+            At Best Cars, customer satisfaction, transparency, and trust
+            are at the heart of everything we do. Our knowledgeable team
+            works together to make your dealership experience simple,
+            informative, and enjoyable.
+        </p>
+    </section>
+
+    <section class="team-section container">
+        <h2>Meet Our Team</h2>
+
+        <div class="row">
+
+            <!-- Team Member 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="team-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&auto=format&fit=crop"
+                        alt="Alex Morgan, Sales Manager">
+
+                    <h3>Alex Morgan</h3>
+                    <p class="role">Sales Manager</p>
+
+                    <p>
+                        Hello, I am Alex. I help customers explore our
+                        vehicle collection and choose cars that suit
+                        their requirements and budget.
+                    </p>
+
+                    <p>
+                        <a href="mailto:alex.morgan@bestcars.example.com">
+                            alex.morgan@bestcars.example.com
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="team-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop"
+                        alt="Jamie Taylor, Customer Relations Specialist">
+
+                    <h3>Jamie Taylor</h3>
+                    <p class="role">Customer Relations Specialist</p>
+
+                    <p>
+                        Hello, I am Jamie. I assist customers with
+                        dealership enquiries, provide useful information,
+                        and help make their experience smooth and pleasant.
+                    </p>
+
+                    <p>
+                        <a href="mailto:jamie.taylor@bestcars.example.com">
+                            jamie.taylor@bestcars.example.com
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="team-card">
+                    <img
+                        src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&auto=format&fit=crop"
+                        alt="Jordan Lee, Vehicle Sales Consultant">
+
+                    <h3>Jordan Lee</h3>
+                    <p class="role">Vehicle Sales Consultant</p>
+
+                    <p>
+                        Hello, I am Jordan. I explain vehicle features,
+                        compare available models, and help customers
+                        make informed purchasing decisions.
+                    </p>
+
+                    <p>
+                        <a href="mailto:jordan.lee@bestcars.example.com">
+                            jordan.lee@bestcars.example.com
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer class="text-center py-3">
+    <p class="mb-0">
+        &copy; 2026 Best Cars Dealership. All rights reserved.
+    </p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
 </html>
+```
