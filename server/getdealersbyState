@@ -1,0 +1,4 @@
+Command: curl -sS http://127.0.0.1:3030/fetchDealers/Kansas
+
+Output:
+[{"_id":"6adddf7e04c3c189daf0fb74","id":8,"city":"Topeka","state":"Kansas","address":"288 Larry Place","zip":"66642","lat":"39.0429","long":"-95.7697","short_name":"Bytecard","full_name":"Bytecard Car Dealership","__v":0}]
