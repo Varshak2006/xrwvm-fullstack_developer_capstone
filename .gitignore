@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Local development dependencies and downloaded data
+**/node_modules/
+server/sentimentenv/
+server/djangoapp/microservices/sentiment/nltk_data/

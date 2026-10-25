@@ -19,6 +19,10 @@ const reviews = new Schema({
     type: String,
     required: true
   },
+    sentiment: {
+    type: String,
+    default: "unknown"
+  },
   purchase: {
     type: Boolean,
     required: true

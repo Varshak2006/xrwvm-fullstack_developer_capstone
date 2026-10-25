@@ -90,16 +90,17 @@ app.post('/insert_review', async (req, res) => {
     const newId = latestReview ? latestReview.id + 1 : 1;
 
     const review = new Reviews({
-      id: newId,
-      name: data.name,
-      dealership: data.dealership,
-      review: data.review,
-      purchase: data.purchase,
-      purchase_date: data.purchase_date,
-      car_make: data.car_make,
-      car_model: data.car_model,
-      car_year: data.car_year
-    });
+        id: newId,
+        name: data.name,
+        dealership: data.dealership,
+        review: data.review,
+        purchase: data.purchase,
+        purchase_date: data.purchase_date,
+        car_make: data.car_make,
+        car_model: data.car_model,
+        car_year: data.car_year,
+        sentiment: data.sentiment
+      });
 
     res.json(await review.save());
   } catch (error) {

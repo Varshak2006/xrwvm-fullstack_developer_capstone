@@ -82,3 +82,91 @@ def getallcarmakes(request):
         })
 
     return JsonResponse(data, safe=False)
+
+# Dealership and review integration
+from .restapis import get_request, analyze_review_sentiments
+
+
+def get_dealerships(request):
+    try:
+        state = request.GET.get("state")
+        if state:
+            dealerships = get_request(f"fetchDealers/{state}")
+        else:
+            dealerships = get_request("fetchDealers")
+
+        return JsonResponse(dealerships, safe=False)
+    except Exception as error:
+        logger.exception("Unable to retrieve dealerships")
+        return JsonResponse(
+            {"error": "Unable to retrieve dealerships"},
+            status=502,
+        )
+
+
+def get_dealer_reviews(request, dealer_id):
+    try:
+        reviews = get_request(f"fetchReviews/dealer/{dealer_id}")
+
+        for review in reviews:
+            try:
+                result = analyze_review_sentiments(review.get("review", ""))
+                review["sentiment"] = result.get("sentiment", "unknown")
+            except Exception:
+                logger.exception("Unable to analyze a review")
+                review["sentiment"] = "unknown"
+
+        return JsonResponse(reviews, safe=False)
+    except Exception:
+        logger.exception("Unable to retrieve dealer reviews")
+        return JsonResponse(
+            {"error": "Unable to retrieve dealer reviews"},
+            status=502,
+        )
+
+# Submit a dealership review
+@csrf_exempt
+def add_review(request):
+    if request.method != "POST":
+        return JsonResponse(
+            {"status": 405, "error": "POST method required"},
+            status=405,
+        )
+
+    try:
+        data = json.loads(request.body)
+
+        required_fields = [
+            "name",
+            "dealership",
+            "review",
+            "purchase",
+            "purchase_date",
+            "car_make",
+            "car_model",
+            "car_year",
+        ]
+
+        if any(field not in data for field in required_fields):
+            return JsonResponse(
+                {"status": 400, "error": "Missing required fields"},
+                status=400,
+            )
+
+        # Analyze the review sentiment before saving it.
+        from .restapis import analyze_review_sentiments, post_review
+
+        sentiment_result = analyze_review_sentiments(data["review"])
+        data["sentiment"] = sentiment_result.get("sentiment", "unknown")
+
+        # Save the review through the existing Node backend.
+        post_review(data)
+
+        return JsonResponse({"status": 200})
+
+    except Exception:
+        logger.exception("Unable to submit dealership review")
+        return JsonResponse(
+            {"status": 502, "error": "Unable to submit review"},
+            status=502,
+        )
